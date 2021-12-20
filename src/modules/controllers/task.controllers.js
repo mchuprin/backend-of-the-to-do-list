@@ -14,7 +14,7 @@ module.exports.createNewTask = (req, res, next) => {
         id: body._id
     });
     task.save().then(result => {
-        res.send(result);
+        res.status(200).send(result);
     });
 };
     
@@ -24,7 +24,7 @@ module.exports.changeTaskText = (req, res, next) => {
         Task.updateOne(filter,{
             $set: {text: body.text}
         }).then(result => {
-            res.send({update: result})
+            res.status(200).send(result);
         });
     };
     
@@ -34,7 +34,7 @@ module.exports.changeIsCheck = (req, res, next) => {
     Task.updateOne(filter,{
         $set: {isCheck: body.isCheck}
     }).then(result => {
-        res.send({update: result})
+        res.status(200).send(result);
     });
 };
     
@@ -42,6 +42,6 @@ module.exports.deleteTask = (req, res, next) => {
     const _id = req.query._id;
     const filter = {_id: _id};
     Task.deleteOne(filter).then(result => {
-        res.send(result);
+        res.status(200).send(result);
     });
 };

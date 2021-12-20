@@ -1,5 +1,5 @@
-const { timingSafeEqual } = require('crypto');
 const express = require ('express');
+const dotenv = require('dotenv').config();
 const mongoose = require ('mongoose');
 let bodyParser = require('body-parser');
 const cors = require('cors');
@@ -11,7 +11,7 @@ const apiRoutes = require ('./src/modules/routes/routes');
 
 app.use(cors());
 
-const uri = "mongodb+srv://mchuprin:copywriter2021@cluster0.ekujr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = process.env.URL;
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use('/', apiRoutes)
