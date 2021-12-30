@@ -2,7 +2,7 @@ const Task = require ('../../db/models/task/index');
 
 module.exports.getAllTasks = (req, res, next) => {
     Task.find().then(result => {
-        res.send({data: result});
+        res.send(result);
     });
 };
 
@@ -15,33 +15,46 @@ module.exports.createNewTask = (req, res, next) => {
     });
     task.save().then(result => {
         res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send(err)
     });
 };
     
 module.exports.changeTaskText = (req, res, next) => {
     const body = req.body;
-    const filter = {_id: body.id};
-        Task.updateOne(filter,{
+    const selector = {_id: body._id};
+        Task.updateOne(selector,{
             $set: {text: body.text}
         }).then(result => {
             res.status(200).send(result);
+        })
+        .catch(err => {
+            res.status(500).send(err)
         });
     };
     
 module.exports.changeIsCheck = (req, res, next) => {
     const body = req.body;
-    const filter = {_id: body.id};
-    Task.updateOne(filter,{
+    const selector = {_id: body._id};
+    Task.updateOne(selector,{
         $set: {isCheck: body.isCheck}
     }).then(result => {
         res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send(err)
     });
 };
     
 module.exports.deleteTask = (req, res, next) => {
     const _id = req.query._id;
-    const filter = {_id: _id};
-    Task.deleteOne(filter).then(result => {
+    const selector = {_id: _id};
+    Task.deleteOne(selector)
+    .then(result => {
         res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send(err)
     });
-};
+}; 
