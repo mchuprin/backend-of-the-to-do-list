@@ -6,6 +6,6 @@ router.get('/allClients' ,userController.getAllClients);
 router.post('/registration', userController.registration);
 router.post('/authorization', userController.authorization);
 router.post('/logout', userController.logout);
-router.get('/refresh', userController.refreshJWT);
+router.get('/refresh', userController.refresh);
 
 module.exports = router;
