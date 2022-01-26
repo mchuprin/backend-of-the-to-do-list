@@ -10,7 +10,10 @@ const uri = process.env.URL;
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL
+}));
 app.use(cookieParser());
 
 const apiRoutes = require ('./src/modules/routes/routes');

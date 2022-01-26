@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -20,7 +21,6 @@
     "gitignore": "^0.7.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.4",
-    "nodejs": "^0.0.0",
-    "nodemon": "^2.0.15"
+    "nodejs": "^0.0.0"
   }
 }
