@@ -11,7 +11,7 @@ module.exports.allAppointments = (req, res, next) => {
             res.send(result);
         });
     } catch (error) {
-        console.log(error)
+        next(error)
     }
     
 };
@@ -51,7 +51,6 @@ module.exports.deleteAppointment = async (req, res, next) => {
 module.exports.editAppointment = async (req, res, next) => {
     try {
         const body = req.body
-        console.log(body)
         const _id = body._id
         const editingAppointment = await Appointment.updateOne({_id} , {
             name: body.name,
